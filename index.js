@@ -15,18 +15,20 @@ const server = http.createServer(app);
 
 app.listen(port, () => {
     console.log(`Server running at http://${hostname}:${port}`);
-})
+});
 
 app.get('/', (req, res) =>{
     res.send('Welcome to Learn App');
-})
+});
 app.get('/proficiencies', (req, res) =>{
-    var langProf = db.any('SELECT * FROM PROFICIENCIES') .then((langProf) => res.send(langProf));
-})
-
+    var langProf = db.any("SELECT * from PROFICIENCIES") .then((langProf) => res.send(langProf));
+});
+app.get('/languages', (req, res) =>{
+    var allLang = db.any("SELECT * from LANGUAGES") .then((allLang) => res.send(allLang));
+});
 
 app.get('/users',(req, res) =>{
     var userInfo= db.any("SELECT * from USERS") .then((userInfo) => res.send(userInfo));
     //console.log(userInfo);
     
-})
+});
